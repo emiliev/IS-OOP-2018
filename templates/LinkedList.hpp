@@ -109,7 +109,184 @@ public:
             temp = temp->pNext;
         }
     }
+
+    T getAt(int index) {
+        if (!correctIndex(index)) {
+            return head->data;
+        }
+        
+        Node<T>* temp = head;
+        int tempCounter = 0;
+        
+        while(tempCounter < index) {
+            temp = temp->pNext;
+            tempCounter++;
+        }
+        
+        return temp->data;
+    }
+
+    bool correctIndex(int index) {
+        return index >= 0 && index < size;
+    }
+
+    void insertAfter(int index, T data) {
+        if (!correctIndex(index)) {
+            return;
+        }
+    
+        int tempIndex = 0;
+        Node<T>* temp = head;
+        
+        while(tempIndex < index) {
+            temp = temp->pNext;
+            tempIndex++;
+        }
+        
+        Node<T>* newNode = new Node<T>(data, temp->pNext);
+        temp->pNext = newNode;
+        size++;
+    }
+
+    void insertBefore(int index, T data) {
+        if (!correctIndex(index)) {
+            return;
+        }
+        
+        if (index == 0) {
+            // insert new head
+            insertHead(data);
+            return;
+        }
+        
+        int tempIndex = 0 ;
+        Node<T>* temp = head;
+        
+        while(tempIndex < index - 1) {
+            tempIndex++;
+            temp = temp->pNext;
+        }
+
+        Node<T>* newNode = new Node<T>(data,temp->pNext);
+        temp->pNext = newNode;
+        size++;
+    }
+
+    void insertHead(T data) {
+        Node<T>* newHead = new Node<T>(data, head);
+        head = newHead;
+        size++;
+    }
+    
+    void removeAt(int index) {
+        if(!correctIndex(index)) {
+            return;
+        }
+        
+        if (index == 0) {
+            removeHead();
+        } else if (index == size - 1) {
+            removeTail();
+        } else {
+        
+            int tempCounter = 0;
+            Node<T>* temp = head;
+            
+            while(tempCounter < index - 1) {
+                tempCounter++;
+                temp = temp->pNext;
+            }
+            
+            Node<T>* removedNode = temp->pNext;
+            temp->pNext = removedNode->pNext;
+            delete removedNode;
+            size--;
+        }
+    }
+
+    void removeHead() {
+        Node<T>* tempNode = head;
+        head = head->pNext;
+        delete tempNode;
+        size--;
+    }
+    
+    void removeTail() {
+        Node<T>* temp = head;
+        
+        while(temp->pNext != tail) {
+            temp = temp->pNext;
+        }
+        
+        delete tail;
+        tail = temp;
+        tail->pNext = nullptr;
+        size--;
+    }
+    
+    void reverse() {
+        Node<T>* prevNode = nullptr; // pointer to the previous node
+        Node<T>* nextNode = nullptr; // pointer to the current node
+        Node<T>* currentNode = head; // pointer to the next node
+        
+        tail = currentNode; // move the tail to the first node
+        
+        while(currentNode) {
+            nextNode = currentNode->pNext; // move to the next node
+            currentNode->pNext = prevNode; // "reversing" the pointer so that it points to the previous node (not the next)
+            prevNode = currentNode; // move the previous pointer to the current node
+            currentNode = nextNode; // moving to the next node
+        }
+        
+        head = prevNode; // moveing the head to the
+    }
+    
+    T findMid() {
+        Node<T>* temp = head;
+        Node<T>* fastTemp = head;
+        
+        while(fastTemp) {
+            fastTemp = fastTemp->pNext;
+            if (fastTemp) {
+                fastTemp = fastTemp->pNext;
+                temp = temp->pNext;
+            }
+        }
+    
+        return temp->data;
+    }
+
+    void findEven() {
+        Node<T>* temp = head;
+        
+        while (temp) {
+            if (temp->data % 2 == 0) {
+                cout<<temp->data<<endl;
+            }
+            
+            temp = temp->pNext;
+        }
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
