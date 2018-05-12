@@ -35,6 +35,8 @@ public:
     
     void setLanguage(char* newLang);
     const char* getLanguage() const;
+    
+    virtual void represent();
 };
 
 #endif /* JProgrammer_hpp */

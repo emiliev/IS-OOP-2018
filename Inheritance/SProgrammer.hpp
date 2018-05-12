@@ -21,6 +21,8 @@ public:
     
     void setBooks(int numOfBooks);
     int getBooks();
+    
+    virtual void represent();
 };
 
 

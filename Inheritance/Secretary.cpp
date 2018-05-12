@@ -56,3 +56,7 @@ const char*  Secretary::getLanguageAt(int index) const {
 int Secretary::getNumberOfLanguages() const {
     return numLanguages;
     }
+
+void Secretary::represent() {
+    Worker::represent();
+}

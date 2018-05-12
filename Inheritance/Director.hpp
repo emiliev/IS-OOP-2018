@@ -11,11 +11,23 @@
 
 #include <stdio.h>
 #include "Worker.hpp"
+#include "DynamicArray.hpp"
+#include "Secretary.hpp"
+#include "JProgrammer.hpp"
+#include "SProgrammer.hpp"
+#include "TeamLeader.hpp"
 
-class Director: Worker {
+class Director: public Worker {
     
-    Worker** workers;
+    DynamicArray<Worker*> workers;
     
+    void createSecretaries(int num);
+    void createTLs(int num);
+public:
+    
+    Director();
+    ~Director();
+    void createCompany();
 };
 
 

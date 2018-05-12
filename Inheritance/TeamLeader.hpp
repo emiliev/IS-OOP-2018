@@ -11,9 +11,38 @@
 
 #include <stdio.h>
 #include "SProgrammer.hpp"
+#include "LinkedList.hpp"
 
-class TeamLeader: SProgramer {
-    // JProgrammer** programmers;
+class TeamLeader: public SProgramer {
+    LinkedList<JProgrammer*> list;
+    
+    JProgrammer* createWorker(char type);
+    
+public:
+    TeamLeader();
+    TeamLeader(char* name, double salaray, char* pLang, WorkingTime wTime, int numBooks);
+    ~TeamLeader();
+    
+    void addProgramer(char type);
+    
+    void printWorkers();
+    void printSeniors();
+    void printSalaries();
+    virtual void represent();
+    
+    JProgrammer* getWorkerAt(int index);
 };
 
 #endif /* TeamLeader_hpp */
+
+
+
+
+
+
+
+
+
+
+
+

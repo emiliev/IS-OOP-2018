@@ -27,3 +27,9 @@ void SProgramer::setBooks(int numOfBooks) {
 int SProgramer::getBooks() {
     return numBooks;
 }
+
+void SProgramer::represent() {
+    JProgrammer::represent();
+    std::cout<<"num books:"<<numBooks<<std::endl;
+}
+

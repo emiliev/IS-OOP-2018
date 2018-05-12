@@ -43,3 +43,9 @@ void JProgrammer::setLanguage(char* newLang) {
 const char* JProgrammer::getLanguage() const {
     return pLanguage;
 }
+
+void JProgrammer::represent() {
+    Worker::represent();
+    std::cout<<"Prog language: "<<pLanguage<<"\n";
+}
+

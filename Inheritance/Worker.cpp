@@ -20,6 +20,9 @@ Worker::Worker(char* newName, double newSalary, WorkingTime _wTime): name(nullpt
 }
 
 Worker::~Worker() {
+    if (name) {
+        std::cout<<"triesh rabotnik s ime: "<< name<<std::endl;
+    }
     erase();
 }
 
@@ -61,3 +64,8 @@ const char* Worker::getName() const {
 WorkingTime Worker::getWorkingTime() const {
     return workingTime;
 }
+
+void Worker::represent() {
+    std::cout<<"My name is: "<<name<<" working time: "<<workingTime<<" Salary: "<< salary<<std::endl;
+}
+

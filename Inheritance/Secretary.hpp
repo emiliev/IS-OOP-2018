@@ -13,7 +13,7 @@
 #include "Worker.hpp"
 #include <string.h>
 
-class Secretary: Worker {
+class Secretary: public Worker {
     char** languages;
     int numLanguages;
     
@@ -37,6 +37,8 @@ public:
     void setLanguages(char** _languages, int _numLanguages);
     const char*  getLanguageAt(int index) const;
     int getNumberOfLanguages() const;
+    
+    virtual void represent();
 };
 
 #endif /* Secretary_hpp */

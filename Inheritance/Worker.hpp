@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <iostream>
 
 enum WorkingTime {
     fixed,
@@ -43,13 +44,15 @@ public:
     Worker(char* newName, double newSalary, WorkingTime _wTime);
     Worker(const Worker& other);
     Worker& operator=(const Worker& other);
-    ~Worker();
+    virtual ~Worker();
     
     void setName(char* newName);
     void setSalary(double newSalary);
     double getSalary() const ;
     const char* getName() const ;
     WorkingTime getWorkingTime() const ;
+
+    virtual void represent();
 };
 
 
